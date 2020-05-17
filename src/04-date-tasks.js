@@ -19,8 +19,8 @@
  *    'Tue, 26 Jan 2016 13:48:02 GMT' => Date()
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
-function parseDataFromRfc2822(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromRfc2822(value) {
+  return Date.parse(value);
 }
 
 /**
@@ -34,8 +34,8 @@ function parseDataFromRfc2822(/* value */) {
  *    '2016-01-19T16:07:37+00:00'    => Date()
  *    '2016-01-19T08:07:37Z' => Date()
  */
-function parseDataFromIso8601(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromIso8601(value) {
+  return Date.parse(value);
 }
 
 
@@ -53,8 +53,11 @@ function parseDataFromIso8601(/* value */) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(/* date */) {
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  const year = date.getFullYear();
+  if (year % 4 === 0 && year % 100 !== 0) return true;
+  if (year % 400 === 0) return true;
+  return false;
 }
 
 
@@ -74,6 +77,24 @@ function isLeapYear(/* date */) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(/* startDate, endDate */) {
+  // // const oneDay = 1000 * 60 * 60 * 24;
+  //
+  // // Convert both dates to milliseconds
+  // const date1Ms = startDate.getTime();
+  // const date2Ms = endDate.getTime();
+  //
+  // // Calculate the difference in milliseconds
+  // let differenceMs = date1Ms - date2Ms;
+  //
+  // // Convert back to days and return
+  // const seconds = Math.floor(differenceMs % 60);
+  // differenceMs /= 60;
+  // const milliseconds = differenceMs - seconds * 60;
+  // const minutes = Math.floor(differenceMs % 60);
+  // differenceMs /= 60;
+  // const hours = Math.floor(differenceMs % 24);
+  //
+  // return `${hours}:${minutes}:${seconds}.${milliseconds}`;
   throw new Error('Not implemented');
 }
 
